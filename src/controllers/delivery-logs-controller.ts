@@ -54,6 +54,10 @@ async show( request: Request, response: Response){
     }
   })
 
+  if(!delivery) {
+    return response.status(404).json({ message: "delivery not found" })
+  }
+
   //esse usario request.user?.role === "customer" é um cliente? 
   //
   if (request.user?.role === "customer" && request.user.id !== delivery?.userId) {
